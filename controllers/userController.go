@@ -1,9 +1,20 @@
 package controllers
 
-import "net/http"
+import (
+	"net/http"
+	"regexp"
+)
 
-type usersController struct {}
+type userController struct {
+	userIDPattern *regexp.Regexp
+}
 
-func (uc usersController) ServerHTTP(w http.ResponseWriter, r *http.Request) {
+func (uc userController) ServerHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello from the User Controller!"))
+}
+
+func newUserController() *userController {
+	return &userController{
+		userIDPattern: regexp.MustCompile(`^/users/(\d+)/?`),
+	}
 }
