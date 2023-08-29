@@ -13,6 +13,7 @@ type userController struct {
 // ServerHTTP is a method that implements the Handler interface and will be called automatically by the http package when a request is received
 func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Write the response to the http.ResponseWriter object
+	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Hello from the User Controller!"))
 }
 
