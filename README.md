@@ -40,6 +40,8 @@ go build .
 ./go_webservice
 ```
 
+You can use Postman to test the API, the collection is in the root of the project.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

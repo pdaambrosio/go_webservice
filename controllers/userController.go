@@ -64,7 +64,6 @@ func (uc userController) getAll(w http.ResponseWriter, r *http.Request) {
 
 func (uc userController) get(id int, w http.ResponseWriter, r *http.Request) {
 	// Write the response to the http.ResponseWriter object
-	w.WriteHeader(http.StatusOK)
 	u, err := models.GetUserByID(id)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -75,7 +74,6 @@ func (uc userController) get(id int, w http.ResponseWriter, r *http.Request) {
 
 func (uc *userController) post(w http.ResponseWriter, r *http.Request) {
 	// Parse the request body and create a new user object
-	w.WriteHeader(http.StatusCreated)
 	u, err := uc.parseRequest(r)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -93,7 +91,6 @@ func (uc *userController) post(w http.ResponseWriter, r *http.Request) {
 
 func (uc *userController) put(id int, w http.ResponseWriter, r *http.Request) {
 	// Parse the request body and create a new user object
-	w.WriteHeader(http.StatusOK)
 	u, err := uc.parseRequest(r)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -127,7 +124,6 @@ func (uc *userController) delete(id int, w http.ResponseWriter) {
 }
 
 func (uc *userController) parseRequest(r *http.Request) (models.User, error) {
-	// Decode the request body into a new user object
 	dec := json.NewDecoder(r.Body)
 	var u models.User
 	err := dec.Decode(&u)
