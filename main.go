@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/pdaambrosio/go_webservice/controllers"
-	// "github.com/pdaambrosio/go_webservice/models"
 )
 
 func main() {
