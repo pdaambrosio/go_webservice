@@ -25,6 +25,17 @@ func (uc userController) getAll(w http.ResponseWriter, r *http.Request) {
 	encodeResponseAsJSON(models.GetUsers(), w)
 }
 
+func (uc userController) get(id int, w http.ResponseWriter, r *http.Request) {
+	// Write the response to the http.ResponseWriter object
+	w.WriteHeader(http.StatusOK)
+	u, err := models.GetUserByID(id)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	encodeResponseAsJSON(u, w)
+}
+
 // newUserController is a function that creates a new user controller and returns a pointer to it so that it can be used to handle requests
 func newUserController() *userController {
 	// Create a new user controller and assign it to a variable and return it as a pointer to the userController struct
