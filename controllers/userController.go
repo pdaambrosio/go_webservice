@@ -3,6 +3,8 @@ package controllers
 import (
 	"net/http"
 	"regexp"
+
+	"github.com/pdaambrosio/go_webservice/models"
 )
 
 // userController is a struct that contains a pointer to a regular expression object that will be used to match the URL path
@@ -15,6 +17,12 @@ func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Write the response to the http.ResponseWriter object
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Hello from the User Controller!"))
+}
+
+func (uc userController) getAll(w http.ResponseWriter, r *http.Request) {
+	// Write the response to the http.ResponseWriter object
+	w.WriteHeader(http.StatusOK)
+	encodeResponseAsJSON(models.GetUsers(), w)
 }
 
 // newUserController is a function that creates a new user controller and returns a pointer to it so that it can be used to handle requests
