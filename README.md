@@ -36,8 +36,7 @@ or
 You can build the program with the following commands:
 
 ```bash
-go build .
-./go_webservice
+go build -o goWebdirver .
 ```
 
 You can use Postman to test the API, the collection is in the root of the project.
